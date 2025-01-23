@@ -1,0 +1,17 @@
+services:
+  pinecone:
+    image: ghcr.io/pinecone-io/pinecone-local:latest # Replace with the actual Pinecone image
+    container_name: pinecone
+    ports:
+      - "8080:8080" # Adjust the port if Pinecone uses a different one
+    volumes:
+      - pinecone-data:/data # For persisting data
+      - pinecone-config:/config # For persisting configuration
+    environment:
+      - PINECONE_ENV=development # Example environment variable, adjust as needed
+
+volumes:
+  pinecone-data:
+    driver: local
+  pinecone-config:
+    driver: local
